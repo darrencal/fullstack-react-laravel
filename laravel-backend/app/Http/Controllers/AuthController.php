@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -23,5 +26,14 @@ class AuthController extends Controller
             'error' => 'Invalid Credentials!',
             Response::HTTP_UNAUTHORIZED,
         ]);
+    }
+
+    public function register(RegisterRequest $request) {
+        $input = $request->all();
+        $input['password'] = Hash::make($request->input('password'));
+
+        $user = User::create($input);
+
+        return response($user, Response::HTTP_CREATED);
     }
 }
