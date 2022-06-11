@@ -31,6 +31,7 @@ class AuthController extends Controller
     public function register(RegisterRequest $request) {
         $input = $request->all();
         $input['password'] = Hash::make($request->input('password'));
+        $input['role_id'] = 2; // Assign default role of Editor
 
         $user = User::create($input);
 
