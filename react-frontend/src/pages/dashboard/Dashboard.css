@@ -1,0 +1,9 @@
+.dashboard {
+    padding: 1rem;
+}
+
+.btn-logout {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-primary);
+    color: #fff;
+}

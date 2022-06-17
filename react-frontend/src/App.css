@@ -1,0 +1,47 @@
+.auth-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  padding: 3rem;
+}
+
+.form-title {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-gray);
+  font-size: 1.2rem;
+}
+
+.form-input:focus {
+  border: 1px solid var(--color-primary);
+}
+
+.form-error {
+  color: var(--color-danger);
+  margin-bottom: 0.5rem;
+}
+
+.form p {
+  padding-top: 0.5rem;
+}
