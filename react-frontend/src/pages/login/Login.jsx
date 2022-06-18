@@ -1,10 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/auth/AuthContext';
 import './Login.css';
 
 const Login = () => {
-  const { isAuthenticated, user, error, login, getUser } = useContext(AuthContext);
+  const { token, error, login } = useContext(AuthContext);
+  
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: '',
@@ -14,8 +16,8 @@ const Login = () => {
   const { email, password } = formData;
 
   useEffect(() => {
-    if (localStorage.getItem('token') && !user) getUser();
-  });
+    if (token) navigate('/');
+  }, [token]);
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -28,7 +30,7 @@ const Login = () => {
     });
   }
 
-  if (isAuthenticated) return <Navigate replace to='/' />;
+  if (token) return <Navigate replace to='/' />;
 
   return (
     <div className="auth-page">

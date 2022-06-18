@@ -5,8 +5,11 @@ import AuthProvider from './context/auth/AuthProvider'
 import Dashboard from './pages/dashboard/Dashboard';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import setAuthToken from './utils/setAuthToken';
 
 axios.defaults.baseURL = 'http://localhost:8000/api/';
+
+if (localStorage.getItem('token')) setAuthToken(localStorage.getItem('token'));
 
 function App() {
   return (

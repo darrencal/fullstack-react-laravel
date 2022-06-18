@@ -4,15 +4,15 @@ import AuthContext from '../../context/auth/AuthContext';
 import './Dashboard.css';
 
 const Dashboard = () => {
-  const {  isAuthenticated, user, getUser, logout } = useContext(AuthContext);
+  const { token, user, getUser, logout } = useContext(AuthContext);
 
   useEffect(() => {
-    if (isAuthenticated && !user) getUser();
+    if (token && !user) getUser();
   });
 
   const handleClick = () => logout();
 
-  if (!isAuthenticated) return <Navigate replace to='/login' />;
+  if (!token) return <Navigate replace to='/login' />;
 
   return (
     <div className='dashboard'>

@@ -53,7 +53,8 @@ const AuthProvider = ({children}) => {
                     payload: res.data,
                 });
 
-                setAuthToken(res.data.token)
+                setAuthToken(res.data.token);
+                getUser();
             }
         } catch (err) {
             dispatch({
@@ -70,12 +71,12 @@ const AuthProvider = ({children}) => {
                     'Content-Type': 'application/json'
                 }
             });
+
             dispatch({
                 type: REGISTER_SUCCESS,
                 payload: res.data,
             });
         } catch (err) {
-            console.log(err)
             dispatch({
                 type: REGISTER_FAIL,
                 payload: err.response.data.message,

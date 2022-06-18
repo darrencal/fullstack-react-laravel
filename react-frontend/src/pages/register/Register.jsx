@@ -4,7 +4,7 @@ import AuthContext from '../../context/auth/AuthContext';
 import './Register.css';
 
 const Register = () => {
-  const { isAuthenticated, user, error, register, getUser } = useContext(AuthContext);
+  const { token, error, register } = useContext(AuthContext);
   const navigate = useNavigate();
   
   const [formData, setFormData] = useState({
@@ -18,8 +18,8 @@ const Register = () => {
   const { first_name, last_name, email, password, password_confirm } = formData;
 
   useEffect(() => {
-    if (localStorage.getItem('token') && !user) getUser();
-  });
+    if (token) navigate('/');
+  }, [token]);
 
   const handleChange = (e) => setFormData({...formData, [e.target.name]: e.target.value});
 
@@ -37,7 +37,7 @@ const Register = () => {
     if (!error) navigate('/login');
   }
 
-  if (isAuthenticated) return <Navigate replace to='/' />;
+  if (token) return <Navigate replace to='/' />;
 
   return (
     <div className="auth-page">
