@@ -19,12 +19,18 @@ class ProductController extends Controller
         return new ProductResource(Product::find($id));
     }
 
-    public function store() {
-
+    public function store(Request $request) {
+        $product = Product::create($request->only('name', 'description', 'image_url', 'price'));
+        
+        return response($product, Response::HTTP_CREATED);
     }
 
-    public function update() {
+    public function update(Request $request, $id) {
+        $product = Product::find($id);
 
+        $product->update($request->only('name', 'description', 'image_url', 'price'));
+
+        return response($product, Response::HTTP_ACCEPTED);
     }
 
     public function destroy($id) {
