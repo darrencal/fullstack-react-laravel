@@ -7,6 +7,7 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class RoleController extends Controller
 {
@@ -15,8 +16,9 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
+        Gate::authorize('view', 'roles');
+
         return RoleResource::collection(Role::all());
     }
 
@@ -26,8 +28,9 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+        Gate::authorize('edit', 'roles');
+
         $role = Role::create($request->only('name'));
 
         // Assign permissions if available
@@ -49,8 +52,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
+        Gate::authorize('view', 'roles');
+        
         return new RoleResource(Role::find($id));
     }
 
@@ -61,8 +65,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
+        Gate::authorize('edit', 'roles');
+
         $role = Role::find($id);
 
         $role->update($request->only('name'));
@@ -91,8 +96,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
+        Gate::authorize('edit', 'roles');
+        
         // Delete permissions assigned to the role
         DB::table('role_permission')
             ->where('role_id', $id)

@@ -11,23 +11,30 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function index() {
+        Gate::authorize('view', 'users');
+
         $users = User::paginate();
 
         return UserResource::collection($users);
     }
 
     public function show($id) {
+        Gate::authorize('view', 'users');
+        
         $user = User::find($id);
 
         return new UserResource($user);
     }
 
     public function store(StoreUserRequest $request) {
+        Gate::authorize('edit', 'users');
+
         $input = $request->all();
         $input['password'] = Hash::make($request->input('password'));
 
@@ -37,6 +44,8 @@ class UserController extends Controller
     }
 
     public function update(UpdateUserRequest $request, $id) {
+        Gate::authorize('edit', 'users');
+
         $input = $request->all();
         $input['password'] = Hash::make($request->input('password'));
         
@@ -47,6 +56,8 @@ class UserController extends Controller
     }
 
     public function destroy($id) {
+        Gate::authorize('edit', 'users');
+
         User::destroy($id);
 
         return response(null, Response::HTTP_NO_CONTENT);

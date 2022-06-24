@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -36,6 +37,13 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             //
+        });
+
+        // Return JSON error instead of default HTML
+        $this->renderable(function (Throwable $e, $request) {
+            return response([
+                'error' => $e->getMessage(),
+            ], $e->getCode() ?: Response::HTTP_BAD_REQUEST);
         });
     }
 }

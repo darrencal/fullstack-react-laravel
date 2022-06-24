@@ -37,4 +37,8 @@ class User extends Authenticatable
     public function permissions() {
         return $this->role->permissions->pluck('name');
     }
+
+    public function hasAccess($permission) {
+        return $this->permissions()->contains($permission);
+    }
 }
