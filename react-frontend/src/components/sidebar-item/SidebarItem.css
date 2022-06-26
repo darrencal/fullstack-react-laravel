@@ -1,0 +1,45 @@
+.menu-item {
+    display: flex;
+    color: var(--color-info-dark);
+    margin-left: 2rem;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    height: 3.7rem;
+    transition: all 300ms ease;
+    cursor: pointer;
+}
+
+.menu-item span.material-icons-round {
+    font-size: 1.6rem;
+    transition: all 300ms ease;
+}
+
+.menu-item h3 {
+    font-weight: 500;
+}
+
+.menu-item.active {
+    margin-left: 0;
+    background: var(--color-light);
+    color: var(--color-primary);
+}
+
+.menu-item.active:before {
+    content: '';
+    width: 6px;
+    height: 100%;
+    background: var(--color-primary);
+}
+
+.menu-item.active span {
+    margin-left: calc(1rem - 6px);
+}
+
+.menu-item:hover {
+    color: var(--color-primary);
+}
+
+.menu-item:hover span {
+    margin-left: 1rem;
+}
