@@ -12,8 +12,10 @@ const MainContainer = ({ children }) => {
 
     return (
         <div className="container">
-            <Sidebar />            
-            {children}
+            <Sidebar />
+            <main>
+                {children}
+            </main>
         </div>
     )
 }

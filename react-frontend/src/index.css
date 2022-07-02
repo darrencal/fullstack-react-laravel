@@ -9,6 +9,7 @@
   --color-info-dark: #7d8da1;
   --color-white: #fff;
   --color-light: rgba(132, 139, 200, 0.18);
+  --color-highlight: rgba(115, 153, 236, 0.5);
   --color-dark: #363949;
   --color-primary-variant: #111e88;
   --color-dark-variant: #677483;
@@ -24,6 +25,7 @@
   --padding-1: 1.2rem;
 
   --box-shadow: 0 2rem 3rem var(--color-light);
+  --box-shadow-highlight: 0 2rem 3rem var(--color-highlight);
 }
 
 * {
@@ -48,6 +50,7 @@ body {
   font-size: 0.88rem;
   user-select: none;
   overflow-x: hidden;
+  color: var(--color-dark);
 }
 
 a {
@@ -110,6 +113,22 @@ b {
 
 .text-warning {
   color: var(--color-warning);
+}
+
+.bg-primary {
+  background: var(--color-primary);
+}
+
+.bg-danger {
+  background: var(--color-danger);
+}
+
+.bg-success {
+  background: var(--color-success);
+}
+
+.bg-warning {
+  background: var(--color-warning);
 }
 
 .btn-primary {

@@ -2,8 +2,8 @@
     padding: 1rem;
 }
 
-.btn-logout {
-    padding: 0.5rem 1rem;
-    background-color: var(--color-primary);
-    color: #fff;
+.insights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
 }
