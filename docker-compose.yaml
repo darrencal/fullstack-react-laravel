@@ -1,0 +1,55 @@
+version: '3.7'
+
+services:
+  frontend:
+    container_name: admin_app
+    build:
+      context: ./react-frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./react-frontend:/app
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+    networks:
+      - app
+
+  backend:
+    container_name: admin_api
+    build:
+      context: ./laravel-backend
+      dockerfile: Dockerfile
+    environment:
+      DB_HOST: db
+      DB_DATABASE: admin
+      DB_USERNAME: admin_user
+      DB_PASSWORD: root
+    ports:
+      - 8000:8000
+    volumes:
+      - ./laravel-backend:/app
+    depends_on:
+      - db
+    networks:
+      - app
+
+  db:
+    container_name: admin_db
+    image: mysql:5.7.36
+    environment:
+      MYSQL_DATABASE: admin
+      MYSQL_USER: admin_user
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./laravel-backend/.dbdata:/var/lib/mysql
+    ports:
+      - 33060:3306
+    networks:
+      - app
+
+networks:
+  app:

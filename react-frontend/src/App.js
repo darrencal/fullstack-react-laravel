@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import AuthProvider from './context/auth/AuthProvider'
 import Dashboard from './pages/dashboard/Dashboard';
+import Users from './pages/users/Users';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import setAuthToken from './utils/setAuthToken';
@@ -17,6 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={'/'} element={<Dashboard />} />
+          <Route path={'/users'} element={<Users />} />
           <Route path={'/login'} element={<Login />} />
           <Route path={'/register'} element={<Register />} />
         </Routes>

@@ -95,51 +95,26 @@ b {
   color: var(--color-dark);
 }
 
-.text-muted {
-  color: var(--color-info-dark);
-}
-
-.text-primary {
-  color: var(--color-primary);
-}
-
-.text-danger {
-  color: var(--color-danger);
-}
-
-.text-success {
-  color: var(--color-success);
-}
-
-.text-warning {
-  color: var(--color-warning);
-}
-
-.bg-primary {
-  background: var(--color-primary);
-}
-
-.bg-danger {
-  background: var(--color-danger);
-}
-
-.bg-success {
-  background: var(--color-success);
-}
-
-.bg-warning {
-  background: var(--color-warning);
-}
-
-.btn-primary {
-  background: var(--color-primary);
-  color: #fff;
-  font-size: 1.2rem;
-  padding: 1rem 1.5rem;
-  border-radius: 5px;
+table {
+  background: var(--color-white);
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  text-align: left;
+  box-shadow: var(--box-shadow);
   transition: all 300ms ease;
 }
 
-.btn-primary:hover {
-  opacity: 0.8;
+table thead tr th {
+  font-size: 1.1rem;
+}
+
+table tbody td {
+  height: 2.8rem;
+  border-bottom: 1px solid var(--color-light);
+  color: var(--color-dark-variant);
+}
+
+table tbody tr:last-child td {
+  border: none;
 }

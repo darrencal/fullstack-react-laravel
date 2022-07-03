@@ -1,16 +1,9 @@
-import { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
 import InsightCard from '../../components/insight-card/InsightCard';
 import MainContainer from '../../components/main-container/MainContainer';
 import RecentOrders from '../../components/recent-orders/RecentOrders';
-import AuthContext from '../../context/auth/AuthContext';
 import './Dashboard.css';
 
 const Dashboard = () => {
-  const { token } = useContext(AuthContext);
-
-  if (!token) return <Navigate replace to='/login' />;
-
   return (
     <MainContainer>
       <h1>Dashboard</h1>

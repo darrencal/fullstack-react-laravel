@@ -86,7 +86,7 @@ const Register = () => {
           onChange={handleChange}
         />
         
-        <input type="submit" value="Register" className="btn-primary" />
+        <input type="submit" value="Register" className="btn btn-primary" />
 
         <p>Already have an account? <Link to={'/login'}>Sign in</Link></p>
       </form>
