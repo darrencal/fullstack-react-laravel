@@ -34,6 +34,7 @@ const Users = () => {
                 <table>
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
@@ -44,6 +45,7 @@ const Users = () => {
                         {!users.length && <tr><td colSpan={4} className="text-primary">Loading users...</td></tr>}
                         {users.map(({id, first_name, last_name, email, role: {name: role_name}}) => (
                             <tr key={id}>
+                                <td>{id}</td>
                                 <td>{first_name} {last_name}</td>
                                 <td>{email}</td>
                                 <td>{role_name}</td>
