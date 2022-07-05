@@ -5,14 +5,19 @@ import './Users.css';
 
 const Users = () => {
     const [users, setUsers] = useState([]);
+    const [page, setPage] = useState(1);
+    const [lastPage, setLastPage] = useState(1);
 
     useEffect(() => {
         let mounted = true;
 
         const fetchUsers = async () => {
-            const res = await axios.get('users');
+            const res = await axios.get(`/users?page=${page}`);
 
-            setUsers(res.data.data)
+            if (mounted) {
+                setUsers(res.data.data);
+                setLastPage(res.data.meta.last_page);
+            }
         }
 
         fetchUsers()
@@ -21,8 +26,17 @@ const Users = () => {
         return () => {
             mounted = false;
         }
-    }, []);
+    }, [page]);
     
+    const goPrev = () => {
+        setUsers([]);
+        setPage(page - 1);
+    }
+    
+    const goNext = () => {
+        setUsers([]);
+        setPage(page + 1);
+    }
     
     return (
         <MainContainer>
@@ -42,7 +56,7 @@ const Users = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {!users.length && <tr><td colSpan={4} className="text-primary">Loading users...</td></tr>}
+                        {!users.length && <tr><td colSpan={4} className="text-primary"><h3>Loading users...</h3></td></tr>}
                         {users.map(({id, first_name, last_name, email, role: {name: role_name}}) => (
                             <tr key={id}>
                                 <td>{id}</td>
@@ -57,6 +71,10 @@ const Users = () => {
                         ))}
                     </tbody>
                 </table>
+                <div className="pagination">
+                    <button className="btn" onClick={goPrev} disabled={page === 1}>Prev</button>
+                    <button className="btn" onClick={goNext} disabled={page === lastPage}>Next</button>
+                </div>
             </div>
         </MainContainer>
     )
