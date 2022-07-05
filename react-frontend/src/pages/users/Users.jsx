@@ -37,6 +37,14 @@ const Users = () => {
         setUsers([]);
         setPage(page + 1);
     }
+
+    const deleteUser = async (id) => {
+        if (window.confirm('Are you sure you want to delete this user?')) {
+            await axios.delete(`/users/${id}`);
+
+            setUsers(users.filter(user => user.id !== id));
+        }
+    }
     
     return (
         <MainContainer>
@@ -65,7 +73,7 @@ const Users = () => {
                                 <td>{role_name}</td>
                                 <td>
                                     <button className="btn">Edit</button>{' '}
-                                    <button className="btn btn-danger">Delete</button>
+                                    <button className="btn btn-danger" onClick={() => deleteUser(id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}
