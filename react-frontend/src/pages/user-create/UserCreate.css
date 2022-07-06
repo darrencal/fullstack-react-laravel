@@ -1,0 +1,8 @@
+.user-create-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-create-form .btn {
+    width: fit-content;
+}

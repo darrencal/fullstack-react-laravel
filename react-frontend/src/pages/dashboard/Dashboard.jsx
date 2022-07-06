@@ -1,11 +1,10 @@
 import InsightCard from '../../components/insight-card/InsightCard';
-import MainContainer from '../../components/main-container/MainContainer';
 import RecentOrders from '../../components/recent-orders/RecentOrders';
 import './Dashboard.css';
 
 const Dashboard = () => {
   return (
-    <MainContainer>
+    <main>
       <h1>Dashboard</h1>
       <div className="insights">
         <InsightCard icon="account_box" color="primary" title="Total Users" quantity="21" percentage="90" />
@@ -13,7 +12,7 @@ const Dashboard = () => {
         <InsightCard icon="local_shipping" color="success" title="Total Orders" quantity="15" percentage="62" />
       </div>
       <RecentOrders />
-    </MainContainer>
+    </main>
   )
 }
 

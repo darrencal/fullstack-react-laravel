@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import MainContainer from '../../components/main-container/MainContainer';
 import './Users.css';
+import { useNavigate } from 'react-router-dom';
 
 const Users = () => {
+    const navigate = useNavigate();
+
     const [users, setUsers] = useState([]);
     const [page, setPage] = useState(1);
     const [lastPage, setLastPage] = useState(1);
@@ -47,11 +49,11 @@ const Users = () => {
     }
     
     return (
-        <MainContainer>
+        <main>
             <div className="users">
                 <h1>Users</h1>
                 <div className="toolbar">
-                    <button className="btn btn-primary">Add</button>
+                    <button onClick={() => navigate('/users/create')} className="btn btn-primary">Add</button>
                 </div>
                 <table>
                     <thead>
@@ -84,7 +86,7 @@ const Users = () => {
                     <button className="btn" onClick={goNext} disabled={page === lastPage}>Next</button>
                 </div>
             </div>
-        </MainContainer>
+        </main>
     )
 }
 

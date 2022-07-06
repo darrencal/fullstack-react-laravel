@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react'
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import AuthContext from '../../context/auth/AuthContext';
 import Sidebar from '../sidebar/Sidebar';
 import './MainContainer.css';
 
-const MainContainer = ({ children }) => {
+const MainContainer = () => {
     const { token, user, getUser } = useContext(AuthContext);
     
     useEffect(() => {
@@ -16,9 +16,7 @@ const MainContainer = ({ children }) => {
     return (
         <div className="container">
             <Sidebar />
-            <main>
-                {children}
-            </main>
+            <Outlet />
         </div>
     )
 }
