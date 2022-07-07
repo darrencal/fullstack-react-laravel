@@ -74,7 +74,7 @@ const Users = () => {
                                 <td>{email}</td>
                                 <td>{role_name}</td>
                                 <td>
-                                    <button className="btn">Edit</button>{' '}
+                                    <button className="btn" onClick={() => navigate(`/users/${id}/edit`)}>Edit</button>{' '}
                                     <button className="btn btn-danger" onClick={() => deleteUser(id)}>Delete</button>
                                 </td>
                             </tr>
