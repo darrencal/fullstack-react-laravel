@@ -8,6 +8,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Users from './pages/users/Users';
 import UserCreate from './pages/user-create/UserCreate';
 import UserEdit from './pages/user-edit/UserEdit';
+import Roles from './pages/roles/Roles';
 import setAuthToken from './utils/setAuthToken';
 import './App.css';
 
@@ -25,6 +26,7 @@ function App() {
             <Route path={'users'} element={<Users />} />
             <Route path={'users/create'} element={<UserCreate />} />
             <Route path={'users/:id/edit'} element={<UserEdit />} />
+            <Route path={'roles'} element={<Roles />} />
           </Route>
           <Route path={'/login'} element={<Login />} />
           <Route path={'/register'} element={<Register />} />
