@@ -15,7 +15,7 @@ const UserEdit = () => {
     useEffect(() => {
         let mounted = true;
 
-        const fetchRoles = async () => {
+        const fetchUserData = async () => {
             const rolesRes = await axios.get('roles');
             const userRes = await axios.get(`/users/${id}`);
             const user = userRes.data.data;
@@ -31,7 +31,7 @@ const UserEdit = () => {
             }
         }
 
-        fetchRoles()
+        fetchUserData()
             .catch(err => console.error(err));
 
         return () => mounted = false;
