@@ -9,6 +9,7 @@ import Users from './pages/users/Users';
 import UserCreate from './pages/user-create/UserCreate';
 import UserEdit from './pages/user-edit/UserEdit';
 import Roles from './pages/roles/Roles';
+import RoleCreate from './pages/role-create/RoleCreate';
 import setAuthToken from './utils/setAuthToken';
 import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
             <Route path={'users/create'} element={<UserCreate />} />
             <Route path={'users/:id/edit'} element={<UserEdit />} />
             <Route path={'roles'} element={<Roles />} />
+            <Route path={'roles/create'} element={<RoleCreate />} />
           </Route>
           <Route path={'/login'} element={<Login />} />
           <Route path={'/register'} element={<Register />} />
