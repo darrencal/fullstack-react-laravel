@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import './Users.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Pagination from '../../components/pagination/Pagination';
+import './Users.css';
 
 const Users = () => {
     const navigate = useNavigate();
 
     const [users, setUsers] = useState([]);
-    const [page, setPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
     const [lastPage, setLastPage] = useState(1);
 
     useEffect(() => {
         let mounted = true;
 
         const fetchUsers = async () => {
-            const res = await axios.get(`/users?page=${page}`);
+            const res = await axios.get(`/users?page=${currentPage}`);
 
             if (mounted) {
                 setUsers(res.data.data);
@@ -28,16 +29,11 @@ const Users = () => {
         return () => {
             mounted = false;
         }
-    }, [page]);
-    
-    const goPrev = () => {
+    }, [currentPage]);
+
+    const handlePageChange = (newPage) => {
         setUsers([]);
-        setPage(page - 1);
-    }
-    
-    const goNext = () => {
-        setUsers([]);
-        setPage(page + 1);
+        setCurrentPage(newPage);
     }
 
     const deleteUser = async (id) => {
@@ -51,7 +47,7 @@ const Users = () => {
     return (
         <main>
             <div className="users">
-                <h1>Users</h1>
+                <h1 className="page-title">Users</h1>
                 <div className="toolbar">
                     <button onClick={() => navigate('/users/create')} className="btn btn-primary">Add</button>
                 </div>
@@ -81,10 +77,7 @@ const Users = () => {
                         ))}
                     </tbody>
                 </table>
-                <div className="pagination">
-                    <button className="btn" onClick={goPrev} disabled={page === 1}>Prev</button>
-                    <button className="btn" onClick={goNext} disabled={page === lastPage}>Next</button>
-                </div>
+                <Pagination currentPage={currentPage} lastPage={lastPage} handlePageChange={handlePageChange} />
             </div>
         </main>
     )

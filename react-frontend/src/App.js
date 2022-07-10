@@ -13,6 +13,7 @@ import RoleCreate from './pages/role-create/RoleCreate';
 import RoleEdit from './pages/role-edit/RoleEdit';
 import setAuthToken from './utils/setAuthToken';
 import './App.css';
+import Products from './pages/products/Products';
 
 axios.defaults.baseURL = 'http://localhost:8000/api/';
 
@@ -31,6 +32,7 @@ function App() {
             <Route path={'roles'} element={<Roles />} />
             <Route path={'roles/create'} element={<RoleCreate />} />
             <Route path={'roles/:id/edit'} element={<RoleEdit />} />
+            <Route path={'products'} element={<Products />} />
           </Route>
           <Route path={'/login'} element={<Login />} />
           <Route path={'/register'} element={<Register />} />

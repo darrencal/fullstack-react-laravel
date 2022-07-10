@@ -36,7 +36,7 @@ const Roles = () => {
     return (
         <main>
             <div className="roles">
-                <h1>Roles</h1>
+                <h1 className="page-title">Roles</h1>
                 <div className="toolbar">
                     <button onClick={() => navigate('/roles/create')} className="btn btn-primary">Add</button>
                 </div>
