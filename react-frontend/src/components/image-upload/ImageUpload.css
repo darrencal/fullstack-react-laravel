@@ -1,0 +1,12 @@
+.image-upload {
+    display: flex;
+    align-items: center;
+}
+
+.image-upload .form-input {
+    flex: 1;
+}
+
+.image-upload .btn {
+    margin-bottom: 1rem;
+}

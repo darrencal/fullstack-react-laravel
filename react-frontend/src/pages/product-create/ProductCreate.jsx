@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import ImageUpload from '../../components/image-upload/ImageUpload';
 import'./ProductCreate.css';
 
 const ProductCreate = () => {
@@ -8,9 +9,11 @@ const ProductCreate = () => {
 
     const [formData, setFormData] = useState({});
 
-    const {name, description, price} = formData;
+    const {name, description, image_url, price} = formData;
 
     const handleChange = (e) => setFormData({...formData, [e.target.name]: e.target.value});
+
+    const handleImageChange = (url) => setFormData({...formData, image_url: url});
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,6 +21,7 @@ const ProductCreate = () => {
         await axios.post('products', {
             name: name,
             description: description,
+            image_url: image_url,
             price: parseFloat(price),
         });
 
@@ -46,7 +50,7 @@ const ProductCreate = () => {
                 </textarea>
 
                 <label htmlFor="image" className="form-label">Image</label>
-                <input type="file" name="image" className="form-input" />
+                <ImageUpload imageUrl={image_url} onChange={handleImageChange} />
 
                 <label htmlFor="price" className="form-label">Price</label>
                 <input 
