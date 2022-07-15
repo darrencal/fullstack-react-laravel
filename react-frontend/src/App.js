@@ -16,6 +16,7 @@ import ProductCreate from './pages/product-create/ProductCreate';
 import ProductEdit from './pages/product-edit/ProductEdit';
 import setAuthToken from './utils/setAuthToken';
 import './App.css';
+import Orders from './pages/orders/Orders';
 
 axios.defaults.baseURL = 'http://localhost:8000/api/';
 
@@ -37,6 +38,7 @@ function App() {
             <Route path={'products'} element={<Products />} />
             <Route path={'products/create'} element={<ProductCreate />} />
             <Route path={'products/:id/edit'} element={<ProductEdit />} />
+            <Route path={'orders'} element={<Orders />} />
           </Route>
           <Route path={'/login'} element={<Login />} />
           <Route path={'/register'} element={<Register />} />
