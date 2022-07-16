@@ -14,9 +14,10 @@ import RoleEdit from './pages/role-edit/RoleEdit';
 import Products from './pages/products/Products';
 import ProductCreate from './pages/product-create/ProductCreate';
 import ProductEdit from './pages/product-edit/ProductEdit';
+import Orders from './pages/orders/Orders';
+import OrderDetails from './pages/order-details/OrderDetails';
 import setAuthToken from './utils/setAuthToken';
 import './App.css';
-import Orders from './pages/orders/Orders';
 
 axios.defaults.baseURL = 'http://localhost:8000/api/';
 
@@ -39,6 +40,7 @@ function App() {
             <Route path={'products/create'} element={<ProductCreate />} />
             <Route path={'products/:id/edit'} element={<ProductEdit />} />
             <Route path={'orders'} element={<Orders />} />
+            <Route path={'orders/:id'} element={<OrderDetails />} />
           </Route>
           <Route path={'/login'} element={<Login />} />
           <Route path={'/register'} element={<Register />} />
