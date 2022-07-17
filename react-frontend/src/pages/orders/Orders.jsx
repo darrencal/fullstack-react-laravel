@@ -32,11 +32,25 @@ const Orders = () => {
         setOrders([]);
         setCurrentPage(newPage);
     }
+
+    const handleExport = async () => {
+        const res = await axios.get('orders/export', {
+            responseType: 'blob',
+        });
+        const fileUrl = window.URL.createObjectURL(res.data);
+        const link = document.createElement('a');
+        link.href = fileUrl;
+        link.download = 'LaRe_orders.csv';
+        link.click();
+    }
     
     return (
         <main>
             <div className="orders">
                 <h1 className="page-title">Orders</h1>
+                <div className="toolbar">
+                    <button onClick={handleExport} className="btn btn-primary">Export</button>
+                </div>
                 <table>
                     <thead>
                         <tr>
